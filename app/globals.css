@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Green Theme Tokens */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  /* Legacy Mappings to prevent breakage */
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: var(--surface-secondary);
+  --color-secondary-foreground: var(--text-primary);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: #FFFFFF;
+  --color-muted-foreground: var(--muted);
+  --color-accent-foreground: #FFFFFF;
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  :root {
+    /* Premium Green Theme Tokens */
+    --background: #F0FDF4; /* Soft Background */
+    --surface: #FFFFFF; /* Card Background */
+    --surface-secondary: #ECFDF5; 
+    --primary: #10B981;
+    --primary-hover: #059669;
+    --secondary: #34D399;
+    --accent: #6EE7B7;
+    --text-primary: #064E3B;
+    --text-secondary: #374151;
+    --muted: #6B7280;
+    --border: #D1FAE5;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Legacy Aliases */
+    --foreground: #064E3B;
+    --card: #FFFFFF;
+    --input: #D1FAE5;
+    --ring: #10B981;
+
+    /* Gradient & Glass */
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(16, 185, 129, 0.12);
+    --gradient-start: #10B981;
+    --gradient-mid: #34D399;
+    --gradient-end: #6EE7B7;
+  }
+
+  .dark {
+    /* Dark Mode Inverse (Adapted for Green Theme) */
+    --background: #022C22;
+    --surface: #064E3B;
+    --surface-secondary: #065F46;
+    --primary: #10B981;
+    --primary-hover: #34D399;
+    --secondary: #059669;
+    --accent: #34D399;
+    --text-primary: #ECFDF5;
+    --text-secondary: #A7F3D0;
+    --muted: #6EE7B7;
+    --border: #047857;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Legacy Aliases */
+    --foreground: #ECFDF5;
+    --card: #064E3B;
+    --input: #047857;
+    --ring: #10B981;
+
+    --glass-bg: rgba(6, 78, 59, 0.92);
+    --glass-border: rgba(16, 185, 129, 0.2);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    background-image: radial-gradient(circle at top left, var(--gradient-start) 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, var(--gradient-end) 0%, transparent 40%);
+    background-size: cover;
+    background-attachment: fixed;
+    /* Font smoothing for premium typography */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Base UI Components (Glass) */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Typography Utilities */
+@layer utilities {
+  .text-hero {
+    @apply text-5xl md:text-7xl font-extrabold tracking-tight text-text-primary;
+  }
+  .text-page-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-text-primary;
+  }
+  .text-section-title {
+    @apply text-2xl font-semibold text-text-primary tracking-tight;
+  }
+  .text-card-title {
+    @apply text-lg font-semibold text-text-primary;
+  }
+  .text-body {
+    @apply text-base text-text-secondary leading-relaxed;
+  }
+  .text-caption {
+    @apply text-sm text-text-secondary;
+  }
+  .text-hint {
+    @apply text-xs text-muted font-medium;
+  }
+}
